@@ -5,7 +5,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `articles`;
 CREATE TABLE `articles` (
-  `id` varchar(32) NOT NULL COMMENT '主键id',
+  `id` varchar(32) NOT NULL DEFAULT 'abc' COMMENT '主键id',
   `title` varchar(32) DEFAULT NULL COMMENT '文章标题',
   `content` text DEFAULT NULL COMMENT '文章内容',
   PRIMARY KEY (`id`)

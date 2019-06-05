@@ -24,7 +24,10 @@ public interface ArticleMapper {
     })
     Article getOne(String id);
 
-    @Insert("INSERT INTO articles(title,content) VALUES(#{title}, #{content})")
+    @SelectKey(keyProperty = "id", resultType = String.class, before = true,
+            statement = "select replace (uuid(), '-', '')")
+    @Options(keyProperty = "article.id", useGeneratedKeys = true)
+    @Insert("INSERT INTO articles(id,title,content) VALUES(#{id}, #{title}, #{content})")
     void insert(Article article);
 
     @Insert("UPDATE articles SET title=#{title}, content=#{content} WHERE id=#{id}")
